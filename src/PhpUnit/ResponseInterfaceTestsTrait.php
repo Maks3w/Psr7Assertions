@@ -38,7 +38,25 @@ trait ResponseInterfaceTestsTrait
 
     // Test methods for change instances status
 
-    public function testValidWithStatus()
+    public function testValidWithStatusDefaultReasonPhrase()
+    {
+        $message = $this->createDefaultResponse();
+        $messageClone = clone $message;
+
+        $statusCode = 100;
+
+        $newMessage = $message->withStatus($statusCode);
+
+        $this->assertImmutable($messageClone, $message, $newMessage);
+
+        Assert::assertEquals(
+            $statusCode,
+            $newMessage->getStatusCode(),
+            'getStatusCode does not match code set in withStatus'
+        );
+    }
+
+    public function testValidWithStatusCustomReasonPhrase()
     {
         $message = $this->createDefaultResponse();
         $messageClone = clone $message;
