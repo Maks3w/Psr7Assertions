@@ -58,6 +58,7 @@ trait RequestInterfaceTestsTrait
      * @dataProvider validRequestTargetProvider
      *
      * @param string $expectedRequestTarget
+     *
      * @return void
      */
     public function testValidWithRequestTarget($expectedRequestTarget)
@@ -88,6 +89,7 @@ trait RequestInterfaceTestsTrait
      * @dataProvider validMethodProvider
      *
      * @param string $expectedMethod
+     *
      * @return void
      */
     public function testValidWithMethod($expectedMethod)

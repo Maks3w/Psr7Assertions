@@ -76,6 +76,7 @@ trait MessageInterfaceTestsTrait
      * @dataProvider validProtocolVersionProvider
      *
      * @param string $expectedVersion
+     *
      * @return void
      */
     public function testValidWithProtocolVersion($expectedVersion)
@@ -109,6 +110,7 @@ trait MessageInterfaceTestsTrait
      * @param string $headerName
      * @param string|string[] $headerValue
      * @param string[] $expectedHeaderValue
+     *
      * @return void
      */
     public function testValidWithHeader($headerName, $headerValue, $expectedHeaderValue)
@@ -133,6 +135,7 @@ trait MessageInterfaceTestsTrait
      * @param string $headerName
      * @param string|string[] $headerValue
      * @param string[] $expectedHeaderValue
+     *
      * @return void
      */
     public function testValidWithAddedHeader($headerName, $headerValue, $expectedHeaderValue)
@@ -156,6 +159,7 @@ trait MessageInterfaceTestsTrait
      *
      * @param string $headerName
      * @param string|string[] $headerValue
+     *
      * @return void
      */
     public function testHasHeader($headerName, $headerValue)
@@ -176,6 +180,7 @@ trait MessageInterfaceTestsTrait
      * @param string|string[] $headerValue
      * @param string[] $expectedHeaderValue
      * @param string $expectedHeaderLine
+     *
      * @return void
      */
     public function testGetHeaderLine($headerName, $headerValue, $expectedHeaderValue, $expectedHeaderLine)
@@ -193,6 +198,7 @@ trait MessageInterfaceTestsTrait
      * @param string $headerName
      * @param string|string[] $headerValue
      * @param string[] $expectedHeaderValue
+     *
      * @return void
      */
     public function testGetHeaders($headerName, $headerValue, $expectedHeaderValue)
@@ -209,6 +215,7 @@ trait MessageInterfaceTestsTrait
      *
      * @param string $headerName
      * @param string|string[] $headerValue
+     *
      * @return void
      */
     public function testWithoutHeader($headerName, $headerValue)
@@ -262,6 +269,7 @@ trait MessageInterfaceTestsTrait
      * DRY Assert header values.
      *
      * @param string[] $values
+     *
      * @return void
      */
     protected function assertValidHeaderValue($values)
@@ -274,6 +282,7 @@ trait MessageInterfaceTestsTrait
      * @param object $messageClone
      * @param object $message
      * @param object $newMessage
+     *
      * @return void
      */
     protected function assertImmutable($messageClone, $message, $newMessage)

@@ -119,6 +119,7 @@ trait ServerRequestInterfaceTestsTrait
      *
      * @param string $attributeName
      * @param string|string[] $attributeValue
+     *
      * @return void
      */
     public function testValidWithAttribute($attributeName, $attributeValue)
@@ -143,6 +144,7 @@ trait ServerRequestInterfaceTestsTrait
      * @param string $attributeName
      * @param string|string[] $attributeValue
      * @param string[] $expectedAttributeValue
+     *
      * @return void
      */
     public function testGetAttributes($attributeName, $attributeValue, $expectedAttributeValue)
@@ -159,6 +161,7 @@ trait ServerRequestInterfaceTestsTrait
      *
      * @param string $attributeName
      * @param string|string[] $attributeValue
+     *
      * @return void
      */
     public function testWithoutAttribute($attributeName, $attributeValue)
