@@ -80,6 +80,40 @@ trait ServerRequestInterfaceTestsTrait
 
     // Test methods for change instances status
 
+    public function testWithCookieParams()
+    {
+        $message = $this->createDefaultServerRequest();
+        $messageClone = clone $message;
+
+        $cookies = ['foo' => 'bar'];
+        $newMessage = $message->withCookieParams($cookies);
+
+        $this->assertImmutable($messageClone, $message, $newMessage);
+
+        Assert::assertEquals(
+            $cookies,
+            $newMessage->getCookieParams(),
+            'getCookieParams does not match body set in withCookieParams'
+        );
+    }
+
+    public function testWithQueryParams()
+    {
+        $message = $this->createDefaultServerRequest();
+        $messageClone = clone $message;
+
+        $query = ['foo' => 'bar'];
+        $newMessage = $message->withQueryParams($query);
+
+        $this->assertImmutable($messageClone, $message, $newMessage);
+
+        Assert::assertEquals(
+            $query,
+            $newMessage->getQueryParams(),
+            'getQueryParams does not match body set in withQueryParams'
+        );
+    }
+
     /**
      * @dataProvider validAttributeProvider
      *
