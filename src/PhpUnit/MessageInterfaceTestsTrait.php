@@ -275,7 +275,7 @@ trait MessageInterfaceTestsTrait
     protected function assertValidHeaderValue($values)
     {
         Assert::assertInternalType('array', $values, 'header values MUST be an array of strings');
-        Assert::assertContainsOnly('string', $values, 'MUST be an array of strings');
+        Assert::assertContainsOnly('string', $values, true, 'MUST be an array of strings');
     }
 
     /**
