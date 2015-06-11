@@ -170,6 +170,20 @@ trait RequestInterfaceTestsTrait
             ->method('getHost')
             ->willReturn('baz.com')
         ;
+        $defaultUriPort = $this->getMock('Psr\Http\Message\UriInterface');
+        $defaultUriPort->expects($this->any())
+            ->method('getPort')
+            ->willReturn('8080')
+        ;
+        $defaultUriHostAndPort = $this->getMock('Psr\Http\Message\UriInterface');
+        $defaultUriHostAndPort->expects($this->any())
+            ->method('getHost')
+            ->willReturn('baz.com')
+        ;
+        $defaultUriHostAndPort->expects($this->any())
+            ->method('getPort')
+            ->willReturn('8080')
+        ;
 
         return [
             // Description => [request, with uri, host header line]
@@ -220,6 +234,20 @@ trait RequestInterfaceTestsTrait
                 $defaultUriHost,
                 true,
                 'foo.com'
+            ],
+
+            // URI port test cases
+            'URI port is ignored if host is empty' => [
+                $defaultRequestHostHeader,
+                $defaultUriPort,
+                false,
+                'foo.com'
+            ],
+            'URI port is used for build Host Header' => [
+                $defaultRequestHostHeader,
+                $defaultUriHostAndPort,
+                false,
+                'baz.com:8080'
             ],
         ];
     }
