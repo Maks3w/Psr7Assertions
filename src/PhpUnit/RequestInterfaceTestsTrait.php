@@ -4,6 +4,7 @@ namespace Maks3w\Psr7Assertions\PhpUnit;
 
 use PHPUnit_Framework_Assert as Assert;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * Provide PHPUnit test methods for Psr\Http\Message\RequestInterface constraints.
@@ -137,6 +138,90 @@ trait RequestInterfaceTestsTrait
             $newRequest->getUri(),
             'getUri does not match request target set in withUri'
         );
+    }
+
+    /**
+     * @dataProvider hostHeaderPreservationWhenUriIsSetProvider
+     *
+     * @param RequestInterface $request
+     * @param UriInterface $uri
+     * @param boolean $preserveHost
+     * @param string[] $expectedHostHeaderLine
+     */
+    public function testHostHeaderPreservationWhenUriIsSet(
+        RequestInterface $request,
+        UriInterface $uri,
+        $preserveHost,
+        $expectedHostHeaderLine
+    ) {
+        $requestAfterUri = $request->withUri($uri, $preserveHost);
+
+        Assert::assertEquals($expectedHostHeaderLine, $requestAfterUri->getHeaderLine('Host'));
+    }
+
+    public function hostHeaderPreservationWhenUriIsSetProvider()
+    {
+        $emptyHostHeader = $this->createDefaultRequest();
+        $defaultRequestHostHeader = $this->createDefaultRequest()->withHeader('Host', 'foo.com');
+
+        $emptyUriHost = $this->getMock('Psr\Http\Message\UriInterface');
+        $defaultUriHost = $this->getMock('Psr\Http\Message\UriInterface');
+        $defaultUriHost->expects($this->any())
+            ->method('getHost')
+            ->willReturn('baz.com')
+        ;
+
+        return [
+            // Description => [request, with uri, host header line]
+            'empty request host / empty uri host / preserveHost false' => [
+                $emptyHostHeader,
+                $emptyUriHost,
+                false,
+                ''
+            ],
+            'empty request host / empty uri host / preserveHost true' => [
+                $emptyHostHeader,
+                $emptyUriHost,
+                true,
+                ''
+            ],
+            'empty request host / default uri host / preserveHost false' => [
+                $emptyHostHeader,
+                $defaultUriHost,
+                false,
+                'baz.com'
+            ],
+            'empty request host / default uri host / preserveHost true' => [
+                $emptyHostHeader,
+                $defaultUriHost,
+                true,
+                'baz.com'
+            ],
+            'default request host / empty uri host / preserveHost false' => [
+                $defaultRequestHostHeader,
+                $emptyUriHost,
+                false,
+                'foo.com'
+            ],
+            'default request host / empty uri host / preserveHost true' => [
+                $defaultRequestHostHeader,
+                $emptyUriHost,
+                true,
+                'foo.com'
+            ],
+            'default request host / default uri host / preserveHost false' => [
+                $defaultRequestHostHeader,
+                $defaultUriHost,
+                false,
+                'baz.com'
+            ],
+            'default request host / default uri host / preserveHost true' => [
+                $defaultRequestHostHeader,
+                $defaultUriHost,
+                true,
+                'foo.com'
+            ],
+        ];
     }
 
     /**
