@@ -145,7 +145,7 @@ trait RequestInterfaceTestsTrait
      *
      * @param RequestInterface $request
      * @param UriInterface $uri
-     * @param boolean $preserveHost
+     * @param bool $preserveHost
      * @param string[] $expectedHostHeaderLine
      */
     public function testHostHeaderPreservationWhenUriIsSet(
@@ -191,49 +191,49 @@ trait RequestInterfaceTestsTrait
                 $emptyHostHeader,
                 $emptyUriHost,
                 false,
-                ''
+                '',
             ],
             'empty request host / empty uri host / preserveHost true' => [
                 $emptyHostHeader,
                 $emptyUriHost,
                 true,
-                ''
+                '',
             ],
             'empty request host / default uri host / preserveHost false' => [
                 $emptyHostHeader,
                 $defaultUriHost,
                 false,
-                'baz.com'
+                'baz.com',
             ],
             'empty request host / default uri host / preserveHost true' => [
                 $emptyHostHeader,
                 $defaultUriHost,
                 true,
-                'baz.com'
+                'baz.com',
             ],
             'default request host / empty uri host / preserveHost false' => [
                 $defaultRequestHostHeader,
                 $emptyUriHost,
                 false,
-                'foo.com'
+                'foo.com',
             ],
             'default request host / empty uri host / preserveHost true' => [
                 $defaultRequestHostHeader,
                 $emptyUriHost,
                 true,
-                'foo.com'
+                'foo.com',
             ],
             'default request host / default uri host / preserveHost false' => [
                 $defaultRequestHostHeader,
                 $defaultUriHost,
                 false,
-                'baz.com'
+                'baz.com',
             ],
             'default request host / default uri host / preserveHost true' => [
                 $defaultRequestHostHeader,
                 $defaultUriHost,
                 true,
-                'foo.com'
+                'foo.com',
             ],
 
             // URI port test cases
@@ -241,13 +241,13 @@ trait RequestInterfaceTestsTrait
                 $defaultRequestHostHeader,
                 $defaultUriPort,
                 false,
-                'foo.com'
+                'foo.com',
             ],
             'URI port is used for build Host Header' => [
                 $defaultRequestHostHeader,
                 $defaultUriHostAndPort,
                 false,
-                'baz.com:8080'
+                'baz.com:8080',
             ],
         ];
     }
