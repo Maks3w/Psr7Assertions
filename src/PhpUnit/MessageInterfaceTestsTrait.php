@@ -4,6 +4,7 @@ namespace Maks3w\Psr7Assertions\PhpUnit;
 
 use PHPUnit_Framework_Assert as Assert;
 use Psr\Http\Message\MessageInterface;
+use Psr\Http\Message\StreamInterface;
 
 /**
  * Provide PHPUnit test methods for Psr\Http\Message\MessageInterface constraints.
@@ -248,6 +249,7 @@ trait MessageInterfaceTestsTrait
         $message = $this->createDefaultMessage();
         $messageClone = clone $message;
 
+        /** @var StreamInterface $expectedBody */
         $expectedBody = $this->getMock('Psr\Http\Message\StreamInterface');
         $newMessage = $message->withBody($expectedBody);
 

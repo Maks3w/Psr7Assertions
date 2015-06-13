@@ -3,6 +3,7 @@
 namespace Maks3w\Psr7Assertions\PhpUnit;
 
 use PHPUnit_Framework_Assert as Assert;
+use PHPUnit_Framework_TestCase as TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\UriInterface;
 
@@ -127,6 +128,7 @@ trait RequestInterfaceTestsTrait
         $request = $this->createDefaultRequest();
         $requestClone = clone $request;
 
+        /** @var UriInterface $uri */
         $uri = $this->getMock('Psr\Http\Message\UriInterface');
 
         $newRequest = $request->withUri($uri);
@@ -166,21 +168,21 @@ trait RequestInterfaceTestsTrait
 
         $emptyUriHost = $this->getMock('Psr\Http\Message\UriInterface');
         $defaultUriHost = $this->getMock('Psr\Http\Message\UriInterface');
-        $defaultUriHost->expects($this->any())
+        $defaultUriHost->expects(TestCase::any())
             ->method('getHost')
             ->willReturn('baz.com')
         ;
         $defaultUriPort = $this->getMock('Psr\Http\Message\UriInterface');
-        $defaultUriPort->expects($this->any())
+        $defaultUriPort->expects(TestCase::any())
             ->method('getPort')
             ->willReturn('8080')
         ;
         $defaultUriHostAndPort = $this->getMock('Psr\Http\Message\UriInterface');
-        $defaultUriHostAndPort->expects($this->any())
+        $defaultUriHostAndPort->expects(TestCase::any())
             ->method('getHost')
             ->willReturn('baz.com')
         ;
-        $defaultUriHostAndPort->expects($this->any())
+        $defaultUriHostAndPort->expects(TestCase::any())
             ->method('getPort')
             ->willReturn('8080')
         ;
