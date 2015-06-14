@@ -2,6 +2,7 @@
 
 namespace Maks3w\Psr7Assertions\PhpUnit;
 
+use Maks3w\PhpUnitMethodsTrait\Framework\TestCaseTrait;
 use PHPUnit_Framework_Assert as Assert;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\StreamInterface;
@@ -11,6 +12,8 @@ use Psr\Http\Message\StreamInterface;
  */
 trait MessageInterfaceTestsTrait
 {
+    use TestCaseTrait;
+
     // Test methods for default/empty instances
 
     public function testMessageImplementsInterface()
