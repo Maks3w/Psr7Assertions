@@ -4,7 +4,7 @@
          bootstrap="vendor/autoload.php"
          colors="true">
     <testsuites>
-        <testsuite name="librrary">
+        <testsuite name="library">
             <directory suffix="Test.php">./test</directory>
         </testsuite>
     </testsuites>
