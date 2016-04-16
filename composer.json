@@ -9,12 +9,6 @@
         "psr-7"
     ],
     "license": "BSD-2-Clause",
-    "authors": [
-        {
-            "name": "Maks3w",
-            "email": "github.maks3w@virtualplanets.net"
-        }
-    ],
     "homepage": "https://github.com/Maks3w/Psr7Assertions",
     "require": {
         "php": ">= 5.4",
