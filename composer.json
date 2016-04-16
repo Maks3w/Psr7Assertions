@@ -16,7 +16,7 @@
         "phpunit/phpunit": "~4.0"
     },
     "require-dev": {
-        "fabpot/php-cs-fixer": "~1.8",
+        "fabpot/php-cs-fixer": "1.9.*",
         "maks3w/phpunit-methods-trait": "^4.6"
     },
     "autoload": {
